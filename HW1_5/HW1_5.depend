@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1583269632 source:/home/pi/CodeBlocks/HW1_5/main.c
+	<stdio.h>
+	<stdlib.h>
+
