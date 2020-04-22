@@ -1,34 +1,38 @@
-{
+ {
 	"version": "2.0.0",
 	"tasks": [
 		{
 			"type": "shell",
-			"label": "C/C++: gcc.exe build active file",
-			"command": "C:\\Program Files (x86)\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin\\gcc.exe",
+			"label": "C: gcc.exe compile active file",
+			"command": "gcc.exe",
 			"args": [
 				"-g",
-				"${file}",
+				"${fileBasenameNoExtension}.c",
 				"-o",
-				"${fileDirname}\\${fileBasenameNoExtension}.exe"
+				"${fileBasenameNoExtension}.exe"
 			],
-			"options": {
-				"cwd": "C:\\Program Files (x86)\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin"
-			},
 			"problemMatcher": [
 				"$gcc"
-			],
-			"group": "build"
+			]
 		},
 		{
 			"type": "shell",
-			"label": "C/C++: .exe run active file",
-			"command": "/c/Program\\ Files\\ \\(x86\\)/mingw-w64/i686-8.1.0-posix-dwarf-rt_v6-rev0/mingw32/bin/gcc.exe",//
-			"args": ["-g","${file}","-o","${fileDirname}\\${fileBasenameNoExtension.exe}","\n","${fileDirname}\\${fileBasenameNoExtension}.exe"],
+			"label": "C: .exe run active file",
+			"command": " '${fileDirname}\\${fileBasenameNoExtension}.exe' ",
+			"problemMatcher": []
+		},
+		{
+			"label": "Build and Exec",
+			"dependsOn": [
+				"C: gcc.exe compile active file",
+				"C: .exe run active file"
+			],
+			"dependsOrder": "sequence",
+			"problemMatcher": [],
 			"group": {
 				"kind": "build",
 				"isDefault": true
-			},
-			"problemMatcher": []
+			}
 		}
 	]
 }
