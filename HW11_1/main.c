@@ -17,7 +17,7 @@ int main(void)
 	while (str2[0] != '\0')
 	{
 		printf("How many characters do you want to copy? || Max characters: %d ", LIMIT);
-		scanf("%d", &n);
+		scanf("%d", &n);//reee
 
 		while (getchar() != '\n')
 			continue;
