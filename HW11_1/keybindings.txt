@@ -1,0 +1,73 @@
+// Place your key bindings in this file to override the defaults
+[
+// Keybindings that are active when the focus is in the editor
+{
+    "key": "ctrl+k ctrl+shift+b",
+    "when": "editorTextFocus && editorLangId == 'c'" ,
+    "command": "workbench.action.terminal.sendSequence",
+    "args": { "text": "stty -echo\n if [ -d ~/cvscode ]; then if [ -d '${fileDirname}\\.vscode' ]; then echo ; echo 'Overwrite ${fileDirname}\\.vscode? (y/any other key)'; read -n1; echo ; if [[ $REPLY == y ]]; then rm -r '${fileDirname}\\.vscode'; cp -r ~/cvscode ${fileDirname}\\.vscode; echo '--'; echo ; echo 'Success: overwrote .vscode'; echo ;else echo '--'; echo ; echo 'Did not overwrite .vscode.'; echo ; fi elif [ -e '${fileDirname}\\.vscode' ]; then echo '--'; echo ; echo 'Error: .vscode exists and is not a directory'; echo ;else cp -r ~/cvscode '${fileDirname}\\.vscode'; echo '--'; echo ; echo 'Success: created c language .vscode'; echo ;fi else echo '--'; echo ; echo 'Error: ~/cvscode is not a valid directory'; echo ; fi && stty echo;\n"}
+},
+{
+    "key": "ctrl+shift+b",
+    "when": "editorTextFocus && editorLangId == 'c'" ,
+    "command": "workbench.action.tasks.runTask",
+    "args": "Build and Exec"
+}
+/*
+stty -echo
+if [ -d ~/cvscode ]; then 
+    if [ -d '${fileDirname}\\.vscode' ]; then 
+        echo ; 
+        echo 'Overwrite ${fileDirname\\.vscode? (y/any other key)'; 
+        read -n1; 
+        echo ; 
+        if [[ $REPLY == y ]]; then 
+            rm -r '${fileDirname}\\.vscode'; 
+            cp -r ~/cvscode ${fileDirname}/.vscode; 
+            echo '--'; 
+            echo ; 
+            echo 'Success: overwrote .vscode'; 
+            echo ;
+        else 
+            echo '--'; 
+            echo ; 
+            echo 'Did not overwrite .vscode.';
+            echo ; 
+        fi 
+    elif [ -e '${fileDirname}\\.vscode' ]; then 
+        echo '--'; 
+        echo ; 
+        echo 'Error: .vscode exists and is not a directory'; 
+        echo ;
+    else
+        cp -r ~/cvscode '${fileDirname}\\.vscode'; 
+        echo '--'; 
+        echo ; 
+        echo 'Success: created c language .vscode'; 
+        echo ;
+    fi 
+else
+    echo '--'; 
+    echo ; 
+    echo 'Error: ~/cvscode is not a valid directory'; 
+    echo ; 
+fi && stty echo;\n
+*/
+
+/*
+{ "key": "shift+home",      "command": "cursorHomeSelect",            "when": "editorTextFocus" },
+
+// Keybindings that are complementary
+{ "key": "f5",              "command": "workbench.action.debug.continue", "when": "inDebugMode" },
+{ "key": "f5",              "command": "workbench.action.debug.start",    "when": "!inDebugMode" },
+
+// Global keybindings
+{ "key": "ctrl+f",          "command": "actions.find" },
+{ "key": "alt+left",        "command": "workbench.action.navigateBack" },
+{ "key": "alt+right",       "command": "workbench.action.navigateForward" },
+
+// Global keybindings using chords (two separate keypress actions)
+{ "key": "ctrl+k enter",    "command": "workbench.action.keepEditor" },
+{ "key": "ctrl+k ctrl+w",   "command": "workbench.action.closeAllEditors" },
+//*/
+]
