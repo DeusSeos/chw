@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define LIMIT 50
+#define LIMIT 100
 
 char * mystrcpy(char *s1, char *s2, int n);
 char * get(char *string, int n);
@@ -17,7 +17,7 @@ int main(void)
 	while (str2[0] != '\0')
 	{
 		printf("How many characters do you want to copy? || Max characters: %d ", LIMIT);
-		scanf("%d", &n);//reee
+		scanf("%d", &n);
 
 		while (getchar() != '\n')
 			continue;
@@ -41,20 +41,16 @@ int main(void)
 
 char * mystrcpy(char *s1, char *s2, int n)
 {
-	// copy n characters from s2 to s1
-	// warning: if length of s2 is n or greater
-	// then s1 may not be null terminated
+	
 
 	int i = 0;
 
-	// copy n characters or until null char
 	while (s2[i] != '\0' && i < n)
 	{
 		s1[i] = s2[i];
 		i++;
 	}
 
-	// if i < n pad s1 with null character
 	while (i < n)
 	{
 		s1[i] = '\0';
