@@ -1,0 +1,47 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "C: gcc.exe compile active file",
+			"command": "gcc.exe",
+			"args": [
+				"-g",
+				"${fileBasenameNoExtension}.c",
+				"-o",
+				"${fileBasenameNoExtension}.exe"
+			],
+			"problemMatcher": {
+				"owner": "cpp",
+				"fileLocation": ["relative", "${workspaceRoot}"],
+				"pattern": {
+					"regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+					"file": 1,
+					"line": 2,
+					"column": 3,
+					"severity": 4,
+					"message": 5
+				}
+			}
+		},
+		{
+			"type": "shell",
+			"label": "C: .exe run active file",
+			"command": " '${fileDirname}\\${fileBasenameNoExtension}.exe' ",
+			"problemMatcher": []
+		},
+		{
+			"label": "Build and Exec",
+			"dependsOn": [
+				"C: gcc.exe compile active file",
+				"C: .exe run active file"
+			],
+			"dependsOrder": "sequence",
+			"problemMatcher": [],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}
