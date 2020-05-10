@@ -1,30 +1,21 @@
 {
 	"version": "2.0.0",
 	"tasks": [
-		{
+	  	{
 			"type": "shell",
-			"label": "C: gcc.exe compile active file",
-			"command": "gcc.exe",
-			"args": [
-				"-g",
-				"${fileBasenameNoExtension}.c",
-				"-o",
-				"${fileBasenameNoExtension}.exe"
-			],
-			"problemMatcher": {
-				"owner": "cpp",
-				"fileLocation": ["relative", "${workspaceRoot}"],
-				"pattern": {
-					"regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
-					"file": 1,
-					"line": 2,
-					"column": 3,
-					"severity": 4,
-					"message": 5
-				}
-			}
+			"label": "gcc build active file",
+			"command": "gcc",
+			"args": ["-g", "${file}", "-o", "${fileDirname}\\${fileBasenameNoExtension}.exe"],
+			"options": {
+			//   "cwd": "C:\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin"
 		},
-		{
+			"problemMatcher": ["$gcc"],
+			"group": {
+			"kind": "build",
+			"isDefault": true
+			}
+	 	},
+	  	{
 			"type": "shell",
 			"label": "C: .exe run active file",
 			"command": " '${fileDirname}\\${fileBasenameNoExtension}.exe' ",
@@ -33,7 +24,7 @@
 		{
 			"label": "Build and Exec",
 			"dependsOn": [
-				"C: gcc.exe compile active file",
+				"gcc build active file",
 				"C: .exe run active file"
 			],
 			"dependsOrder": "sequence",
@@ -43,5 +34,54 @@
 				"isDefault": true
 			}
 		}
+
 	]
 }
+
+// {
+// 	"version": "2.0.0",
+// 	"tasks": [
+// 		{
+// 			"type": "shell",
+// 			"label": "C: gcc.exe compile active file",
+// 			"command": "gcc.exe",
+// 			"args": [
+// 				"-g",
+// 				"${fileBasenameNoExtension}.c",
+// 				"-o",
+// 				"${fileBasenameNoExtension}.exe"
+// 			],
+// 			"problemMatcher": {
+// 				"owner": "cpp",
+// 				"fileLocation": ["relative", "${workspaceRoot}"],
+// 				"pattern": {
+// 					"regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+// 					"file": 1,
+// 					"line": 2,
+// 					"column": 3,
+// 					"severity": 4,
+// 					"message": 5
+// 				}
+// 			}
+// 		},
+// 		{
+// 			"type": "shell",
+// 			"label": "C: .exe run active file",
+// 			"command": " '${fileDirname}\\${fileBasenameNoExtension}.exe' ",
+// 			"problemMatcher": []
+// 		},
+// 		{
+// 			"label": "Build and Exec",
+// 			"dependsOn": [
+// 				"C: gcc.exe compile active file",
+// 				"C: .exe run active file"
+// 			],
+// 			"dependsOrder": "sequence",
+// 			"problemMatcher": [],
+// 			"group": {
+// 				"kind": "build",
+// 				"isDefault": true
+// 			}
+// 		}
+// 	]
+// }

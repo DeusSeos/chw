@@ -8,7 +8,7 @@ int main(void){
 
     char string[LIMIT];
 
-    char * get(char *string, int max);
+    char * get(char *string, int max); 
 
     printf("Enter a string to be reversed: ");
     get(string, LIMIT );
