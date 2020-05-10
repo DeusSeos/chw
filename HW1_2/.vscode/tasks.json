@@ -1,21 +1,21 @@
- {
+{
 	"version": "2.0.0",
 	"tasks": [
-		{
+	  	{
 			"type": "shell",
-			"label": "C: gcc.exe compile active file",
-			"command": "gcc.exe",
-			"args": [
-				"-g",
-				"${fileBasenameNoExtension}.c",
-				"-o",
-				"${fileBasenameNoExtension}.exe"
-			],
-			"problemMatcher": [
-				"$gcc"
-			]
+			"label": "gcc build active file",
+			"command": "gcc",
+			"args": ["-g", "${fileBasename}", "-o", "${fileBasenameNoExtension}.exe"],
+			"options": {
+			"cwd": "${workspaceFolder}"
 		},
-		{
+			"problemMatcher": ["$gcc"],
+			"group": {
+			"kind": "build",
+			"isDefault": true
+			}
+	 	},
+	  	{
 			"type": "shell",
 			"label": "C: .exe run active file",
 			"command": " '${fileDirname}\\${fileBasenameNoExtension}.exe' ",
@@ -24,7 +24,7 @@
 		{
 			"label": "Build and Exec",
 			"dependsOn": [
-				"C: gcc.exe compile active file",
+				"gcc build active file",
 				"C: .exe run active file"
 			],
 			"dependsOrder": "sequence",
@@ -34,5 +34,6 @@
 				"isDefault": true
 			}
 		}
+
 	]
 }
